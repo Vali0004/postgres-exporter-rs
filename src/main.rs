@@ -4,8 +4,7 @@ use std::io::{Write, BufWriter};
 use std::thread::sleep;
 use std::time::Duration;
 
-fn do_scrape(client: &mut Client) -> Result<(), Box<dyn std::error::Error>> {
-  let outname = "/var/lib/prometheus-node-exporter-text-files/postgres-rates.prom";
+fn do_scrape(client: &mut Client, outname: &String) -> Result<(), Box<dyn std::error::Error>> {
   let tempfile = format!("{}.next", outname);
 
   let file = File::create(&tempfile)?;
